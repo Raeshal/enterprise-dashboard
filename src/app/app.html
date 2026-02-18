@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<input type="text" [(ngModel)]="value" />
+<button (click)="searchWithInput(value)">Search</button>
+
+<div *ngFor="let item of result">
+  <p>{{ item }}</p>
+</div>
