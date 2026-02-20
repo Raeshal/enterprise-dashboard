@@ -19,17 +19,22 @@ export class App {
   constructor(private service: DataService) {}
 
   ngOnInit() {
-    this.searchSubject.pipe(
-      debounceTime(400),
-      switchMap((value) => this.service.search(value))
-    ).subscribe((res) => {
-      this.result = res;
-      console.log(res);
-    });
+    // this.searchSubject.pipe(
+    //   debounceTime(400),
+    //   switchMap((value) => this.service.search(value))
+    // ).subscribe((res) => {
+    //   this.result = res;
+    //   console.log(res);
+    // });
   }
 
   searchWithInput(value: string) {
+  this.service.search(value).subscribe((res:any)=>
+  {
+    this.result=res;
+    console.log(res);
+  })
 
-    this.searchSubject.next(value);
+    //console.log(this.searchSubject.next(value));
   }
 }
